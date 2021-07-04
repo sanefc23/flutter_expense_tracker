@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:personal_expenses/expense_datepicker.dart';
+
 import './transaction.dart';
 
 void main() => runApp(MyApp());
@@ -56,7 +58,35 @@ class MyHomePage extends StatelessWidget {
           Card(
             color: Colors.teal,
             child: Container(
-              child: Text('CHART'),
+              height: 150,
+              child: Center(
+                child: Text('CHART'),
+              ),
+            ),
+          ),
+          //Text Inputs
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "Title",
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "Amount",
+                    ),
+                  ),
+                  ExpenseDatePicker(),
+                  TextButton(
+                    onPressed: () => print('added!'),
+                    child: Text('Add'),
+                  ),
+                ],
+              ),
             ),
           ),
           Column(
