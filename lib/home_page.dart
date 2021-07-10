@@ -51,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Expense Tracker'),
       ),
@@ -69,45 +70,71 @@ class _MyHomePageState extends State<MyHomePage> {
           //Text Inputs
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
                 children: [
-                  TextField(
-                    controller: titleController,
-                    decoration: InputDecoration(
-                      labelText: "Title",
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      controller: titleController,
+                      decoration: InputDecoration(
+                        labelText: "Title",
+                      ),
                     ),
                   ),
-                  TextField(
-                    controller: amountController,
-                    decoration: InputDecoration(
-                      labelText: "Amount",
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      controller: amountController,
+                      decoration: InputDecoration(
+                        labelText: "Amount",
+                      ),
                     ),
                   ),
-                  TextField(
-                    controller: dateController,
-                    onTap: () => showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2001),
-                      lastDate: DateTime(2222),
-                    ).then((date) {
-                      setState(() {
-                        dateController.text =
-                            DateFormat('dd/MM/yy').format(date!).toString();
-                      });
-                    }),
-                    decoration: InputDecoration(
-                      labelText: 'Date',
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      controller: dateController,
+                      onTap: () => showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2001),
+                        lastDate: DateTime(2222),
+                      ).then((date) {
+                        setState(() {
+                          dateController.text =
+                              DateFormat('dd/MM/yy').format(date!).toString();
+                        });
+                      }),
+                      decoration: InputDecoration(
+                        labelText: 'Date',
+                      ),
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      print(titleController.text);
-                      print(amountController.text);
-                      print(dateController.text);
-                    },
-                    child: Text('Add'),
+                  Container(
+                    width: double.infinity,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: TextButton(
+                            onPressed: () {
+                              print(titleController.text);
+                              print(amountController.text);
+                              print(dateController.text);
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'Add transaction',
+                                textScaleFactor: 1.2,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
