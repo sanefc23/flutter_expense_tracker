@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
@@ -36,7 +35,7 @@ class TransactionList extends StatelessWidget {
                             height: 8,
                           ),
                           Text(
-                            DateFormat('dd/MM/yy').format(tx.date),
+                            tx.date,
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey[600],
@@ -53,6 +52,7 @@ class TransactionList extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8.0),
                                       color: Colors.grey[200]),
+                                  // TODO: implement monthly payments.
                                   child: Text(
                                     '\$ ' +
                                         (tx.amount / tx.installments)
@@ -65,6 +65,7 @@ class TransactionList extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
+                                  // TODO: implement installment counter.
                                   'Cuota ${tx.installments} de ${tx.installments}',
                                   style: TextStyle(
                                     fontSize: 12,

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TransDatePicker extends StatefulWidget {
-  const TransDatePicker({Key? key}) : super(key: key);
-
   @override
   _TransDatePickerState createState() => _TransDatePickerState();
 }
@@ -24,6 +22,7 @@ class _TransDatePickerState extends State<TransDatePicker> {
   Widget build(BuildContext context) {
     return TextField(
       controller: dateController,
+      keyboardType: TextInputType.datetime,
       onTap: () => showDatePicker(
         context: context,
         initialDate: DateTime.now(),
